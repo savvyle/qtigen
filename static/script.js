@@ -42,7 +42,6 @@ async function formatProblems(responseArea) {
 
 async function convertProblems() {
   const problems = responseArea.value;
-  const zipName = document.getElementById("zipName").value;
 
   const response = await fetch("/convert", {
     method: "POST",
@@ -61,7 +60,7 @@ async function convertProblems() {
   const url = URL.createObjectURL(zip);
   const a = document.createElement("a");
   a.href = url;
-  a.download = zipName + ".zip";
+  a.download = "QTI.zip";
   a.click();
   a.remove(); // Removes the hidden "a" element from the html
   URL.revokeObjectURL(url); // Frees up memory used by the blob URL
