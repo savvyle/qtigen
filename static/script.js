@@ -71,7 +71,7 @@ generateButton.addEventListener("click", () => {
   if (userInput.value !== "") {
     generateProblems(userInput);
   } else {
-    alert("Please enter a topic for problem generation");
+    alert("Please enter a topic in Step 1 for problem generation");
   }
 });
 
@@ -79,7 +79,7 @@ formatButton.addEventListener("click", () => {
   if (responseArea.value !== "") {
     formatProblems(responseArea);
   } else {
-    alert("Please enter problems to format");
+    alert("Please enter problems in Step 2 to format");
   }
 });
 
@@ -87,6 +87,6 @@ convertButton.addEventListener("click", () => {
   if (responseArea.value !== "") {
     convertProblems();
   } else {
-    alert("Please enter problems to convert");
+    alert("Please enter problems in Step 2 to convert");
   }
 });
