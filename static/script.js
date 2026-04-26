@@ -5,6 +5,22 @@ const responseArea = document.getElementById("responseArea");
 const convertButton = document.getElementById("convertButton");
 const formatButton = document.getElementById("formatButton");
 
+const LOADING_DOTS_HTML =
+  '<span class="btn-dots" aria-hidden="true">' +
+  '<span class="btn-dot">.</span><span class="btn-dot">.</span><span class="btn-dot">.</span></span>';
+
+async function runWithButtonLoading(button, work) {
+  const previousHTML = button.innerHTML;
+  button.disabled = true;
+  button.innerHTML = LOADING_DOTS_HTML;
+  try {
+    await work();
+  } finally {
+    button.innerHTML = previousHTML;
+    button.disabled = false;
+  }
+}
+
 userInput.addEventListener("input", () => {
   userInput.style.height = "auto";
   userInput.style.height = userInput.scrollHeight - 20 + "px";
@@ -66,26 +82,45 @@ async function convertProblems() {
   URL.revokeObjectURL(url); // Frees up memory used by the blob URL
 }
 
-generateButton.addEventListener("click", () => {
-  if (userInput.value !== "") {
-    generateProblems(userInput);
-  } else {
+generateButton.addEventListener("click", async () => {
+  if (userInput.value === "") {
     alert("Please enter a topic in Step 1 for problem generation");
+    return;
+  }
+  try {
+    await runWithButtonLoading(generateButton, () =>
+      generateProblems(userInput),
+    );
+  } catch (e) {
+    console.error(e);
+    alert("Generation failed. Check the console and try again.");
   }
 });
 
-formatButton.addEventListener("click", () => {
-  if (responseArea.value !== "") {
-    formatProblems(responseArea);
-  } else {
+formatButton.addEventListener("click", async () => {
+  if (responseArea.value === "") {
     alert("Please enter problems in Step 2 to format");
+    return;
+  }
+  try {
+    await runWithButtonLoading(formatButton, () =>
+      formatProblems(responseArea),
+    );
+  } catch (e) {
+    console.error(e);
+    alert("Format failed. Check the console and try again.");
   }
 });
 
-convertButton.addEventListener("click", () => {
-  if (responseArea.value !== "") {
-    convertProblems();
-  } else {
+convertButton.addEventListener("click", async () => {
+  if (responseArea.value === "") {
     alert("Please enter problems in Step 2 to convert");
+    return;
+  }
+  try {
+    await runWithButtonLoading(convertButton, () => convertProblems());
+  } catch (e) {
+    console.error(e);
+    alert("Convert failed. Check the console and try again.");
   }
 });
