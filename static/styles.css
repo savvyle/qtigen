@@ -92,7 +92,8 @@ textarea {
 p {
   display: inline;
 }
-button {
+button,
+button:active {
   display: inline;
   background-color: #87c9a1;
   border: none;
@@ -106,9 +107,14 @@ button {
 button:hover {
   background-color: #75ae8c;
 }
-button:active {
-  background-color: #79b290;
+button:disabled,
+button:hover:disabled,
+button:active:disabled {
+  background-color: #87c9a1;
+  cursor: not-allowed;
+  opacity: 0.5;
 }
+
 #buttonsContainer {
   display: flex;
   justify-content: space-between;
@@ -116,7 +122,8 @@ button:active {
   width: 95%;
   margin: 0px;
 }
-#convertButton {
+#convertButton,
+#convertButton:active {
   background-color: rgb(244, 134, 107);
   color: black;
   padding-left: 15px;
@@ -125,10 +132,14 @@ button:active {
 #convertButton:hover {
   background-color: rgb(223, 108, 79);
 }
-#convertButton:active {
-  background-color: rgb(242, 102, 68);
+#convertButton:disabled,
+#convertButton:hover:disabled,
+#convertButton:active:disabled {
+  background-color: rgb(244, 134, 107);
+  cursor: not-allowed;
+  opacity: 0.5;
 }
-#magicWand {
+.magic-wand {
   margin-left: 2px;
   width: 13px;
   height: 13px;
@@ -142,4 +153,36 @@ label {
 }
 div {
   margin-top: 10px;
+}
+
+.btn-dots {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.5em;
+}
+.btn-dots .btn-dot {
+  display: inline-block;
+  font-weight: bold;
+  line-height: 1;
+  animation: btnDotStep 0.9s ease-in-out infinite;
+  opacity: 0.25;
+}
+.btn-dots .btn-dot:nth-child(1) {
+  animation-delay: 0s;
+}
+.btn-dots .btn-dot:nth-child(2) {
+  animation-delay: 0.24s;
+}
+.btn-dots .btn-dot:nth-child(3) {
+  animation-delay: 0.48s;
+}
+@keyframes btnDotStep {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  30% {
+    opacity: 1;
+  }
 }
