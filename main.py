@@ -11,7 +11,6 @@ import zipfile
 import subprocess
 from pathlib import Path
 import tempfile
-import uvicorn
 
 class UserInput(BaseModel):
     message: str
@@ -109,6 +108,3 @@ async def convert_problems(input: GeneratedProblems, background_tasks: Backgroun
         media_type="application/zip",
         background=background_tasks
     )
-
-if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
