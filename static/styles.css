@@ -92,8 +92,7 @@ textarea {
 p {
   display: inline;
 }
-button,
-button:active {
+button {
   display: inline;
   background-color: #87c9a1;
   border: none;
@@ -103,15 +102,15 @@ button:active {
   cursor: pointer;
   padding: 8px;
   color: black;
+  width: 94px;
+  height: 32.5px;
 }
 button:hover {
   background-color: #75ae8c;
 }
-button:disabled,
-button:hover:disabled,
-button:active:disabled {
+button:disabled {
   background-color: #87c9a1;
-  cursor: not-allowed;
+  cursor: default;
   opacity: 0.5;
 }
 
@@ -122,21 +121,19 @@ button:active:disabled {
   width: 95%;
   margin: 0px;
 }
-#convertButton,
-#convertButton:active {
+#convertButton {
   background-color: rgb(244, 134, 107);
   color: black;
   padding-left: 15px;
   padding-right: 15px;
+  width: 122px;
 }
 #convertButton:hover {
   background-color: rgb(223, 108, 79);
 }
-#convertButton:disabled,
-#convertButton:hover:disabled,
-#convertButton:active:disabled {
+#convertButton:disabled {
   background-color: rgb(244, 134, 107);
-  cursor: not-allowed;
+  cursor: default;
   opacity: 0.5;
 }
 .magic-wand {
