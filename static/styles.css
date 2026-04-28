@@ -102,7 +102,7 @@ button {
   cursor: pointer;
   padding: 8px;
   color: black;
-  width: 94px;
+  width: 105px;
   height: 32.5px;
 }
 button:hover {
@@ -126,7 +126,7 @@ button:disabled {
   color: black;
   padding-left: 15px;
   padding-right: 15px;
-  width: 122px;
+  width: 140px;
 }
 #convertButton:hover {
   background-color: rgb(223, 108, 79);
